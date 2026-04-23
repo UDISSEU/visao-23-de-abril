@@ -1,0 +1,141 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.login-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+
+  background: linear-gradient(135deg, #2F6FED, #1e4ed8);
+  font-family: Arial, sans-serif;
+}
+
+/* CAIXA */
+.login-box {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(15px);
+
+  padding: 30px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 350px;
+  color: white;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.login-box h2 {
+  margin-top: 0;
+  margin-bottom: 18px;
+  font-size: 24px;
+  letter-spacing: 0.4px;
+}
+
+.login-box p {
+  margin: 18px 0 0;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.login-box p span {
+  color: #cfe2ff;
+  text-decoration: underline;
+}
+
+/* INPUT */
+.login-box input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+
+/* BOTÃO */
+.login-box button {
+  width: 100%;
+  padding: 12px;
+  background: #2F6FED;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.login-box button:hover {
+  background: #1e4ed8;
+}
+
+/* LINKS */
+.login-box span {
+  color: #a5c8ff;
+  cursor: pointer;
+}
+
+/* REQUISITOS DE SENHA */
+.requisitos-senha {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 12px;
+  margin: 12px 0;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.titulo-req {
+  margin: 0 0 8px 0;
+  font-weight: 700;
+  font-size: 13px;
+  color: #cfe2ff;
+}
+
+.req-item {
+  padding: 4px 0;
+  color: rgba(255, 200, 100, 0.8);
+  transition: color 0.3s ease;
+}
+
+.req-item.atendido {
+  color: #4ade80;
+}
+
+.req-item.nao-atendido {
+  color: rgba(255, 100, 100, 0.8);
+}
+
+@media (max-width: 480px) {
+  .login-body {
+    padding: 12px;
+  }
+
+  .login-box {
+    padding: 22px;
+    border-radius: 16px;
+    max-width: 100%;
+  }
+
+  .login-box h2 {
+    font-size: 22px;
+  }
+
+  .login-box input,
+  .login-box button {
+    padding: 14px;
+    font-size: 15px;
+  }
+
+  .login-box p {
+    font-size: 13px;
+  }
+}

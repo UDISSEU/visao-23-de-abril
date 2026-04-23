@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visão Fixa</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="welcome-overlay" id="welcome-overlay">
+  <div class="welcome-card">
+    <div class="welcome-icon">✓</div>
+    <h2>Bem-vindo, <span id="welcome-name"></span>!</h2>
+    <p>Seu painel está pronto.</p>
+  </div>
+</div>
+
+<header class="topo">
+  <h1>
+    <img src="https://img.icons8.com/ios-filled/50/2F6FED/bank-card-back-side.png">
+    Visão Fixa
+  </h1>
+  <p>Organize seus gastos pessoais de forma simples e visual</p>
+</header>
+
+<div class="profile-container">
+  <button type="button" class="profile-button" id="profile-button" aria-label="Abrir opções do perfil">
+    <span class="profile-dot" id="profile-dot">U</span>
+    <div class="profile-info">
+      <div class="profile-name" id="profile-user-name">Usuário</div>
+      <div class="profile-email" id="profile-user-email">email@exemplo.com</div>
+    </div>
+  </button>
+  <div class="profile-menu" id="profile-menu">
+    <button type="button" class="profile-menu-item" id="theme-toggle">
+      <span class="theme-label">
+        <span>Tema</span>
+      </span>
+      <span class="menu-icon" id="theme-icon">🌙</span>
+    </button>
+    <button type="button" class="profile-menu-item logout-item" id="logout-button">
+      <span>Sair</span>
+      <span class="menu-icon">🚪</span>
+    </button>
+  </div>
+</div>
+
+<div class="view-switcher">
+  <button id="btn-gastos" class="switch-button active" type="button">Área de Gastos</button>
+  <button id="btn-salario" class="switch-button" type="button">Área de Salário</button>
+</div>
+
+<!-- TOTAL -->
+<section class="card-total">
+  <div>
+    <span>Total de Gastos</span>
+    <h2 id="total-geral">R$ 0.00</h2>
+  </div>
+
+  <img class="icone-dolar"
+  src="https://img.icons8.com/ios-filled/50/BFBFBF/us-dollar-circled--v2.png">
+</section>
+
+<section class="salario-area" id="salario-area">
+  <h2>Registrar Salário</h2>
+  <div class="salary-cards">
+    <div class="salary-card salary-card-renda">
+      <span>Renda atual</span>
+      <h2 id="renda-atual">R$ 0.00</h2>
+    </div>
+    <div class="salary-card salary-card-saida">
+      <span>Saída</span>
+      <h2 id="saida-atual">R$ 0.00</h2>
+    </div>
+    <div class="salary-card salary-card-saldo">
+      <span>Saldo atual</span>
+      <h2 id="saldo-atual">R$ 0.00</h2>
+    </div>
+  </div>
+  <div class="linha">
+    <input type="number" id="salario-input" placeholder="0.00" min="0" step="0.01">
+  </div>
+  <button type="button" onclick="salvarSalario()">Salvar Salário</button>
+  <div class="salario-info">
+    <span>Salário atual</span>
+    <h2 id="salario-atual">R$ 0.00</h2>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="formulario">
+  <h2>Adicionar Novo Gasto</h2>
+
+  <div class="linha">
+    <input type="text" id="nome" placeholder="Ex: Netflix">
+    <input type="number" id="valor" placeholder="0.00">
+  </div>
+
+  <select id="categoria">
+    <option>Alimentação</option>
+    <option>Moradia</option>
+    <option>Contas Bancárias</option>
+    <option>Transporte</option>
+    <option>Saúde</option>
+    <option>Educação</option>
+    <option>Telefonia</option>
+    <option>Lazer e Entretenimento</option>
+    <option>Vestuário</option>
+    <option>Imposto e Taxas</option>
+  </select>
+
+  <button onclick="adicionarGasto()">+ Adicionar Gasto</button>
+</section>
+
+<!-- CATEGORIAS -->
+<section class="categorias" id="categorias-container">
+
+  <div class="card-cat">
+    <h3>🍔 Alimentação</h3>
+    <span>Total</span>
+    <h2 id="alimentacao-total">R$ 0.00</h2>
+    <p id="alimentacao-msg">Nenhum gasto ainda</p>
+    <div class="gastos-lista" id="alimentacao-lista"></div>
+  </div>
+
+  <div class="card-cat">
+    <h3>🏠 Moradia</h3>
+    <span>Total</span>
+    <h2 id="moradia-total">R$ 0.00</h2>
+    <p id="moradia-msg">Nenhum gasto ainda</p>
+    <div class="gastos-lista" id="moradia-lista"></div>
+  </div>
+
+  <div class="card-cat">
+    <h3>🏦 Contas Bancárias</h3>
+    <span>Total</span>
+    <h2 id="contas-total">R$ 0.00</h2>
+    <p id="contas-msg">Nenhum gasto ainda</p>
+    <div class="gastos-lista" id="contas-lista"></div>
+  </div>
+
+  <div class="card-cat">
+    <h3>🚗 Transporte</h3>
+    <span>Total</span>
+    <h2 id="transporte-total">R$ 0.00</h2>
+    <p id="transporte-msg">Nenhum gasto ainda</p>
+    <div class="gastos-lista" id="transporte-lista"></div>
+  </div>
+
+  <div class="card-cat">
+    <h3>⚕️ Saúde</h3>
+    <span>Total</span>
+    <h2 id="saude-total">R$ 0.00</h2>
+    <p id="saude-msg">Nenhum gasto ainda</p>
+    <div class="gastos-lista" id="saude-lista"></div>
+  </div>
+
+  <div class="card-cat">
+    <h3>📚 Educação</h3>
+    <span>Total</span>
+    <h2 id="educacao-total">R$ 0.00</h2>
+    <p id="educacao-msg">Nenhum gasto ainda</p>
+    <div class="gastos-lista" id="educacao-lista"></div>
+  </div>
+
+  <div class="card-cat">
+    <h3>📱 Telefonia</h3>
+    <span>Total</span>
+    <h2 id="telefonia-total">R$ 0.00</h2>
+    <p id="telefonia-msg">Nenhum gasto ainda</p>
+    <div class="gastos-lista" id="telefonia-lista"></div>
+  </div>
+
+  <div class="card-cat">
+    <h3>🎮 Lazer e Entretenimento</h3>
+    <span>Total</span>
+    <h2 id="lazer-total">R$ 0.00</h2>
+    <p id="lazer-msg">Nenhum gasto ainda</p>
+    <div class="gastos-lista" id="lazer-lista"></div>
+  </div>
+
+  <div class="card-cat">
+    <h3>👕 Vestuário</h3>
+    <span>Total</span>
+    <h2 id="vestuario-total">R$ 0.00</h2>
+    <p id="vestuario-msg">Nenhum gasto ainda</p>
+    <div class="gastos-lista" id="vestuario-lista"></div>
+  </div>
+
+  <div class="card-cat">
+    <h3>💰 Imposto e Taxas</h3>
+    <span>Total</span>
+    <h2 id="imposto-total">R$ 0.00</h2>
+    <p id="imposto-msg">Nenhum gasto ainda</p>
+    <div class="gastos-lista" id="imposto-lista"></div>
+  </div>
+
+</section>
+
+
+<script src="script.js"></script>
+</body>
+</html>

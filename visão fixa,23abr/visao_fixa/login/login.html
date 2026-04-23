@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+
+<body class="login-body">
+
+<!-- 🔐 LOGIN -->
+<div class="login-box" id="login">
+  <h2>Entrar</h2>
+
+  <input type="text" id="login-user" name="login-user" placeholder="Email" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <input type="password" id="login-pass" name="login-pass" placeholder="Senha" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+
+  <button onclick="login()">Entrar</button>
+
+  <p>Não tem conta? <span onclick="mostrarCadastro()">Criar conta</span></p>
+</div>
+
+<!-- 🧾 CADASTRO -->
+<div class="login-box" id="cadastro" style="display: none;">
+  <h2>Criar Conta</h2>
+
+  <input type="text" id="cad-nome" placeholder="Nome completo" autocomplete="off" autocorrect="off" autocapitalize="off">
+  <input type="email" id="cad-email" placeholder="Email" autocomplete="off" autocorrect="off" autocapitalize="off">
+  <input type="password" id="cad-pass" placeholder="Senha" autocomplete="new-password" autocorrect="off" autocapitalize="off" oninput="verificarSenha()">
+  <input type="password" id="cad-pass2" placeholder="Confirmar senha" autocomplete="new-password" autocorrect="off" autocapitalize="off">
+
+  <div class="requisitos-senha" id="requisitos" style="display: none;">
+    <p class="titulo-req">Requisitos da senha:</p>
+    <div class="req-item" id="req-8">✓ Mínimo 8 caracteres</div>
+    <div class="req-item" id="req-maiuscula">✓ Uma letra MAIÚSCULA</div>
+    <div class="req-item" id="req-minuscula">✓ Uma letra minúscula</div>
+    <div class="req-item" id="req-numero">✓ Um número</div>
+    <div class="req-item" id="req-especial">✓ Um caractere especial (!@#$%^&* etc)</div>
+  </div>
+
+  <button onclick="cadastrar()">Cadastrar</button>
+
+  <p><span onclick="voltarLogin()">Voltar</span></p>
+</div>
+
+<script src="auth.js"></script>
+
+</body>
+</html>
